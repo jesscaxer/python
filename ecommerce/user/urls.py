@@ -16,7 +16,17 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from django.conf.urls import url
+
+from user import views
+
+
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^user/', include('user.urls', namespace='user')),
+    url(r'^register/$', views.RegisterClassView.as_view(), name='register'),
+    # url(r'^$', views.MainClassView.as_view(), name='main'),
+    # url(r'^add/$', views.AddClassView.as_view(), name='add'),
+    # url(r'^detail/(.*?)/$', views.DetailClassView.as_view(), name='detail'),
+    # url(r'^delete/(.*?)/$', views.DeleteClassView.as_view(), name='delete'),
+    # url(r'^update/(.*?)/$', views.UpdateClassView.as_view(), name='update'),
+    # url(r'^login/$', views.landingClassView.as_view(), name='login'),
 ]
