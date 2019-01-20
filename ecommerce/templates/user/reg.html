@@ -23,8 +23,11 @@
     <form method="post" action="">
         {% csrf_token %}
         <input type="text" name="mobile" placeholder="请输入手机号" class="login-name">
-        <input type="text" name="password" placeholder="请输入密码" class="login-password">
+        <p>{{ errors.mobile.0 }}</p>
+        <input type="password" name="password" placeholder="请输入密码" class="login-password">
+        <p>{{ errors.password.0 }}</p>
         <input type="password" name="repassword" placeholder="确认密码" class="login-name">
+        <p>{{ errors.repassword.0 }}</p>
         <a href="#"><input type="submit" class="login-btn" value="立即注册"></a>.
     </form>
     <div class="agree">
