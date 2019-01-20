@@ -23,10 +23,11 @@ from user import views
 
 urlpatterns = [
     url(r'^register/$', views.RegisterClassView.as_view(), name='register'),
-    # url(r'^$', views.MainClassView.as_view(), name='main'),
+    url(r'^login/$', views.LoginClassView.as_view(), name='login'),
+    url(r'^member$', views.MemberClassView.as_view(), name='member'),
     # url(r'^add/$', views.AddClassView.as_view(), name='add'),
     # url(r'^detail/(.*?)/$', views.DetailClassView.as_view(), name='detail'),
     # url(r'^delete/(.*?)/$', views.DeleteClassView.as_view(), name='delete'),
     # url(r'^update/(.*?)/$', views.UpdateClassView.as_view(), name='update'),
-    # url(r'^login/$', views.landingClassView.as_view(), name='login'),
+
 ]

@@ -22,7 +22,7 @@
     <div style="height: 3rem;"></div>
     <form method="post" action="">
         {% csrf_token %}
-        <input type="text" name="mobile" placeholder="请输入手机号" class="login-name">
+        <input type="text" name="mobile" placeholder="请输入手机号" class="login-name" value={{ mobile }}>
         <p>{{ errors.mobile.0 }}</p>
         <input type="password" name="password" placeholder="请输入密码" class="login-password">
         <p>{{ errors.password.0 }}</p>
