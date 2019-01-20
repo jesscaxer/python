@@ -41,29 +41,19 @@ class RegisterClassView(View):
         data = request.POST
         form = RegisterModelForm(data)
         if form.is_valid():
-            mobile = form.cleaned_data.get('username')
+            mobile = form.cleaned_data.get('mobile')
             password = form.cleaned_data.get('password')
-            password =encrption_pwd(password)
-            Users.objects.create(mobile=mobile, password=password)
-
-
-            # # 操作数据库
-            # cleaned_data = form.cleaned_data
-            # # 创建一个用户
-            # user = Users()
-            # user.username = cleaned_data.get('username')
-            # user.password = set_password(cleaned_data.get('password'))
-            # user.save()
-            return HttpResponse('user:main')
+            Users.objects.create(mobile=mobile,password=password)
+            return HttpResponse('ok')
 
         else:
             context = {
                 'mobile': form.cleaned_data.get('mobile')
             }
-            return render(request, 'user/reg.html', context=context)
+            # return render(request, 'user/reg.html', context=context)
+            return HttpResponse('buok')
 
 
-# #登陆页
 # class landingClassView(View):
 #     def get(self, request):
 #         return render(request, 'loginitem/login.html')
