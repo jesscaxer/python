@@ -24,10 +24,10 @@ from user import views
 urlpatterns = [
     url(r'^register/$', views.RegisterClassView.as_view(), name='register'),
     url(r'^login/$', views.LoginClassView.as_view(), name='login'),
-    url(r'^member$', views.MemberClassView.as_view(), name='member'),
-    # url(r'^add/$', views.AddClassView.as_view(), name='add'),
-    # url(r'^detail/(.*?)/$', views.DetailClassView.as_view(), name='detail'),
-    # url(r'^delete/(.*?)/$', views.DeleteClassView.as_view(), name='delete'),
-    # url(r'^update/(.*?)/$', views.UpdateClassView.as_view(), name='update'),
+    url(r'^member/$', views.MemberClassView.as_view(), name='member'),
+    url(r'^infor/$', views.IforClassView.as_view(), name='infor'),
+    url(r'^update_password/$', views.Update_passwordClassView.as_view(), name='update_password'),
+    url(r'^SendMsm/$', views.SendMsm.as_view(), name='SendMsm'),
+    url(r'^forget/$', views.ForgetClassView.as_view(), name='forget'),
 
 ]
