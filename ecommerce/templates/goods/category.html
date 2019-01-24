@@ -35,14 +35,9 @@
     </ul>
     <div class="content-list">
         <div class="list-left">
-            <li><a href="">进口特产</a></li>
-            <li class="current"><a href="">休闲零食</a></li>
-            <li><a href="">糖果饼干</a></li>
-            <li><a href="">饮料牛奶</a></li>
-            <li><a href="">方便速食</a></li>
-            <li><a href="">生活用品</a></li>
-            <li><a href="">香烟代购</a></li>
-            <li><a href="">水果酸奶便当</a></li>
+            {% for category in categories %}
+                <li class="current"><a href="">{{ category.cate_name }}</a></li>
+            {% endfor %}
         </div>
         <div class="list-right">
             <ul class="list-pro">

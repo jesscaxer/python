@@ -165,9 +165,10 @@ class Update_passwordForm(forms.Form):
         else:
             raise forms.ValidationError('输入用户旧密码错误！')
 
+
     # 判断两次密码是否一致
     def clean(self):
-        pwd = self.cleaned_data.get('new_password')
+        pwd = self.cleaned_data.get('password')
         repwd = self.cleaned_data.get('repassword')
         if pwd and repwd and pwd != repwd:
             raise forms.ValidationError({'repassword': '两次密码不一致'})
@@ -176,7 +177,7 @@ class Update_passwordForm(forms.Form):
 
 
 
-# 注册密码检验
+#忘记密码的表单验证
 class ForgetModelForm(forms.ModelForm):
     password = forms.CharField(min_length=8, max_length=20, error_messages={
         'min_length': '密码不能小于8位',
@@ -190,11 +191,11 @@ class ForgetModelForm(forms.ModelForm):
     })
 
     # 验证码
-
     captcha = forms.CharField(max_length=6,
                               error_messages={
                                   'required': "验证码必须填写"
                               })
+
     class Meta:
         model = Users
         fields = ['mobile']
@@ -203,6 +204,15 @@ class ForgetModelForm(forms.ModelForm):
                 'required': '号码不能为空',
             }
         }
+
+    # 判断账号是否存在
+    def clean_mobile(self):
+        mobile = self.cleaned_data.get('mobile')
+        flag = Users.objects.filter(mobile=mobile).exists()
+        if not flag:
+            raise forms.ValidationError('用户不存在')
+        else:
+            return mobile
 
     # 判断两次密码是否一致
     def clean(self):

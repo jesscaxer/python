@@ -41,7 +41,16 @@ INSTALLED_APPS = [
     'goods.apps.GoodsConfig',
     'shopping_cart.apps.ShoppingCartConfig',
     'order_details.apps.OrderDetailsConfig',
+    'ckeditor',  # 添加ckeditor富文本编辑器
+    'ckeditor_uploader',  # 添加ckeditor富文本编辑器文件上传部件
 ]
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -67,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -134,9 +144,22 @@ CACHES = {
     }
 }
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+#
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
 
+#发送验证短信的配置
 ACCESS_KEY_ID = "LTAI2qSiJdWP87em"
 ACCESS_KEY_SECRET = "FzORQ587PgGBoOAdmxzCjaxQi8klUi"
+
+#
+MEDIA_URL = "/static/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 

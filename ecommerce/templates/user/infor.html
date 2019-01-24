@@ -16,20 +16,22 @@
         </h1>
     </header>
     <div style="height: 49px;"></div>
-    <form method="post" action="">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <ul class="safty1">
             <li>
-                <a href="">
-                    <i style="margin-top: 25px;">头像</i>
-                    <div class="infor-pic">
-                        <img src="{{ user.head_show }}">
-                    </div>
-                </a>
+            <i style="margin-top: 25px;">头像</i>
+            <div class="infor-pic">
+                <img src="{{ MEDIA_URL }}{{ user.head_show }}"/>
+            </div>
+
+            </li>
+            <li>
+            <input type="file" name="head">
             </li>
             <li>
                 <i>昵称</i>
-                <input name="username" class="infor-tele" value={{ user.username }}>
+                <input name="username" class="infor-tele" value={{ user.username}}>
             </li>
             <p>{{ errors.username.0}}</p>
             <li>

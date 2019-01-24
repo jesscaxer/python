@@ -64,11 +64,12 @@ class LoginClassView(View):
         #判断提交的表单数据是否合理
         if form.is_valid():
             #创建session
-            #获取清洗后的user信息
+            # 获取清洗后的user信息
             user = form.cleaned_data.get('user')
             #创建session
             request.session['id'] = user.id
             request.session['mobile'] = user.mobile
+            request.session['head_show'] = user.head_show
             return redirect('user:member')
         else:
             # 如果表单数据不合理则抛出错误
@@ -115,7 +116,6 @@ class Update_passwordClassView(View):
         else:
             return render(request, 'user/password.html')
     def post(self,request):
-
         data = request.POST
         #创建实例化对象
         form = Update_passwordForm(data)
@@ -164,6 +164,7 @@ class IforClassView(View):
         data = request.POST
         #创建实例化对象
         user_id = request.session.get("id")
+        head_show = request.FILES.get("head_show")
         form = InforModelForm(data, instance=Users.objects.get(pk=user_id))
         #判断数据是否合理
         if form.is_valid():
@@ -172,6 +173,7 @@ class IforClassView(View):
             id = request.session.get('id')
             #合理则更新数据
             Users.objects.filter(id=id).update(
+                head_show=head_show,
                 username=infor.get('name'),
                 sex=infor.get('sex'),
                 birthday=infor.get('birthday'),

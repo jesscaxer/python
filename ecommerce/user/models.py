@@ -17,7 +17,7 @@ from django.core.validators import MinLengthValidator, RegexValidator
 # 是否删除
 
 class Users(models.Model):
-    head_show = models.CharField(max_length=50, null=True, blank=True, verbose_name='头像')
+    head_show = models.ImageField(upload_to="head/%Y%m", default="head/head_show.jpg", verbose_name="用户头像")
     mobile = models.CharField(max_length=11, unique=True, validators=[
         RegexValidator(r'1[35789]\d{9}')
     ], verbose_name='手机号码')
