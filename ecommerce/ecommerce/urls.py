@@ -18,6 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^search/', include('haystack.urls')),
     url(r'^ckeditor/', include("ckeditor_uploader.urls")),
     url(r'^user/', include('user.urls', namespace='user')),
     url(r'^goods/', include('goods.urls', namespace='goods')),

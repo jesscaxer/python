@@ -16,12 +16,12 @@
 			<div class="am-header-left am-header-nav">
 		        <a href="city.html" class="" style="color: #fff;">
 			        <img src="{% static 'images/city.png' %}" />
-			        <p style="font-size: 12px; margin-top: -35px;" id="info">南昌</p>
+			        <p style="font-size: 12px; margin-top: -35px;" id="info">成都</p>
 			    </a>
 		   </div>
         <h1 class="am-header-title1">
 		        <div class="search-box">
-		           <a href="village.html" class="index-search">南昌大学前湖校区∨</a>
+		           <a href="village.html" class="index-search">请输入想要搜索的商品</a>
 		         <!--  <input type="submit" value="" class="search-icon" /> -->
 		        </div>
 		    </h1>
@@ -85,7 +85,7 @@
       </li>
       <li>
         <div class="am-gallery-item">
-            <a href="{% url 'goods:category' %}" class="">
+            <a href="{% url 'goods:category' '' '' %}" class="">
               <img src="{% static 'images/icon5.png'%}" />
               <p>超市</p>
             </a>

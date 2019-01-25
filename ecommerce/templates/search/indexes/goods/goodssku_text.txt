@@ -1,0 +1,4 @@
+# 指定搜索的字段
+{{object.sku_name}}
+{{object.brief}}
+{{object.goods_spu.content}}

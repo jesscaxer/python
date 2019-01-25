@@ -28,25 +28,26 @@
     </header>
     <div style="height: 49px;"></div>
     <ul class="list-nav">
-        <li class="current"><a href="">综合</a></li>
-        <li><a href="">销量</a></li>
-        <li><a href=""><i class="list-price">价格</i></li>
-        <li><a href="">新品</a></li>
+        <li {% if order == 0 %}class="current"{% endif %}><a href="{% url 'goods:category' cate_id 0%}">综合</a></li>
+        <li {% if order == 1 %}class="current"{% endif %}><a href="{% url 'goods:category' cate_id 1%}">销量</a></li>
+        <li {% if order == 2 or order == 3 %}class="current"{% endif %}><a id="price"  href="{% url 'goods:category' cate_id 2 %}"><i class="list-price">价格</i></a></li>
+        <li {% if order == 4 %}class="current"{% endif %}><a href="{% url 'goods:category' cate_id 4%}">新品</a></li>
     </ul>
     <div class="content-list">
         <div class="list-left">
             {% for category in categories %}
-                <li class="current"><a href="">{{ category.cate_name }}</a></li>
+                <li {% if category.id == cate_id %} class="current"  {% endif %}><a href="{% url 'goods:category' category.id order %}">{{ category.cate_name }}</a></li>
             {% endfor %}
         </div>
         <div class="list-right">
             <ul class="list-pro">
+                {% for good_sku in goods_sku %}
                 <li>
-                    <a href="detail.html"><img src=" {% static 'images/test10.png' %}" class="list-pic"/></a>
+                    <a href="{% url 'goods:detail' good_sku.id %}"><img src=" {{ MEDIA_URL }}{{ good_sku.logo }}" class="list-pic"/></a>
                     <div class="shop-list-mid" style="width: 65%;">
-                        <div class="tit"><a href="detail.html">法国加力果12个装 进口新鲜水果 嘎啦苹果 包邮</a></div>
-                        <div class="am-gallery-desc">￥52</div>
-                        <p>销量：5件</p>
+                        <div class="tit"><a href="detail.html">{{ good_sku.sku_name }}</a></div>
+                        <div class="am-gallery-desc">￥{{ good_sku.price }}</div>
+                        <p>销量：{{ good_sku.sale_num }}</p>
                     </div>
                     <div class="list-cart">
                         <div class="d-stock ">
@@ -57,93 +58,7 @@
                     </div>
                     <!--<a href="" class="list-cart"><img src="images/cart.png" width="30"/></a>-->
                 </li>
-                <li>
-                    <a href="detail.html"><img src=" {% static 'images/test10.png' %}" class="list-pic"/></a>
-                    <div class="shop-list-mid" style="width: 65%;">
-                        <div class="tit"><a href="detail.html">法国加力果12个装 进口新鲜水果 嘎啦苹果 包邮</a></div>
-                        <div class="am-gallery-desc">￥52</div>
-                        <p>销量：5件</p>
-                    </div>
-                    <div class="list-cart">
-                        <div class="d-stock ">
-                            <a class="decrease">-</a>
-                            <input id="num" readonly="" class="text_box" name="" type="text" value="0">
-                            <a class="increase">+</a>
-                        </div>
-                    </div>
-                    <!--<a href="" class="list-cart"><img src="images/cart.png" width="30"/></a>-->
-                </li>
-                <li>
-                    <a href="detail.html"><img src=" {% static 'images/test10.png' %}" class="list-pic"/></a>
-                    <div class="shop-list-mid" style="width: 65%;">
-                        <div class="tit"><a href="detail.html">法国加力果12个装 进口新鲜水果 嘎啦苹果 包邮</a></div>
-                        <div class="am-gallery-desc">￥52</div>
-                        <p>销量：5件</p>
-                    </div>
-                    <div class="list-cart">
-                        <div class="d-stock ">
-                            <a class="decrease">-</a>
-                            <input id="num" readonly="" class="text_box" name="" type="text" value="0">
-                            <a class="increase">+</a>
-                        </div>
-                    </div>
-                    <!--<a href="" class="list-cart"><img src="images/cart.png" width="30"/></a>-->
-                </li>
-                <li>
-                    <a href="detail.html"><img src=" {% static 'images/test10.png' %}" class="list-pic"/></a>
-                    <div class="shop-list-mid" style="width: 65%;">
-                        <div class="tit"><a href="detail.html">法国加力果12个装 进口新鲜水果 嘎啦苹果 包邮</a></div>
-                        <div class="am-gallery-desc">￥52</div>
-                        <p>销量：5件</p>
-                    </div>
-                    <div class="list-cart">
-                        <div class="d-stock ">
-                            <a class="decrease">-</a>
-                            <input id="num" readonly="" class="text_box" name="" type="text" value="0">
-                            <a class="increase">+</a>
-                        </div>
-                    </div>
-                    <!--<a href="" class="list-cart"><img src="images/cart.png" width="30"/></a>-->
-                </li>
-                <li>
-                    <a href="detail.html"><img src=" {% static 'images/test10.png' %}" class="list-pic"/></a>
-                    <div class="shop-list-mid" style="width: 65%;">
-                        <div class="tit"><a href="detail.html">法国加力果12个装 进口新鲜水果 嘎啦苹果 包邮</a></div>
-                        <div class="am-gallery-desc">￥52</div>
-                        <p>销量：5件</p>
-                    </div>
-                    <div class="list-cart">
-                        <div class="d-stock ">
-                            <a class="decrease">-</a>
-                            <input id="num" readonly="" class="text_box" name="" type="text" value="0">
-                            <a class="increase">+</a>
-                        </div>
-                    </div>
-                    <!--<a href="" class="list-cart"><img src="images/cart.png" width="30"/></a>-->
-                </li>
-                <li>
-                    <a href="detail.html"><img src=" {% static 'images/test10.png' %}" class="list-pic"/></a>
-                    <div class="shop-list-mid" style="width: 65%;">
-                        <div class="tit"><a href="detail.html">法国加力果12个装 进口新鲜水果 嘎啦苹果 包邮</a></div>
-                        <div class="am-gallery-desc">￥52</div>
-                        <p>销量：5件</p>
-                    </div>
-                    <div class="list-cart">
-                        <div class="d-stock ">
-                            <a class="decrease">-</a>
-                            <input id="num" readonly="" class="text_box" name="" type="text" value="0">
-                            <a class="increase">+</a>
-                        </div>
-                    </div>
-                    <!--<a href="" class="list-cart"><img src="images/cart.png" width="30"/></a>-->
-                </li>
-                <li>
-                    <a href="detail.html"><img src=" {% static 'images/test10.png' %}" class="list-pic"/></a>
-                    <div class="shop-list-mid" style="width: 65%;">
-                        <div class="tit"><a href="detail.html">法国加力果12个装 进口新鲜水果 嘎啦苹果 包邮</a></div>
-                        <div class="am-gallery-desc">￥52</div>
-                        <p>销量：5件</p>
-                    </div>
+                {% endfor %}
                     <div class="list-cart">
                         <div class="d-stock ">
                             <a class="decrease">-</a>
@@ -204,6 +119,14 @@
                     update_item(self.siblings('input').data('item-id'));
                 }
             })
+        })
+    $(function () {
+            // 修改 标签上的地址值
+            {% if order == 2 %}
+                $("#price").attr('href','{% url "goods:category" cate_id 3 %}');
+            {% elif order == 3 %}
+                $("#price").attr('href','{% url "goods:category" cate_id 2 %}');
+            {% endif %}
         })
 
     </script>
